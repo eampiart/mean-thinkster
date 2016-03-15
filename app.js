@@ -18,4 +18,7 @@ app.controller("MainCtrl", [
             }
             $scope.title = '';
         };
+        $scope.incrementUpvotes = function(post){
+            post.upvotes++;
+        };
 }]);
