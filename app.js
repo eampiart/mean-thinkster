@@ -1,4 +1,4 @@
-var app = angular.module('mean_thinkster', []); // initialization needs a dependencies list -- must be omitted when just referencing
+var app = angular.module('meanThinkster', []); // initialization needs a dependencies list -- must be omitted when just referencing
 
 app.controller("MainCtrl", [
     '$scope',
