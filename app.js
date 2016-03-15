@@ -11,4 +11,11 @@ app.controller("MainCtrl", [
           {title: 'post 4', upvotes: 9},
           {title: 'post 5', upvotes: 4}
         ];
+        $scope.addPost = function(){
+            if ($scope.title || $scope.title !== '') {
+                $scope.posts.push({title: $scope.title, upvotes: 0});
+                console.log("New post added!");
+            }
+            $scope.title = '';
+        };
 }]);
