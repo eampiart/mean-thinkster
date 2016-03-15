@@ -13,10 +13,15 @@ app.controller("MainCtrl", [
         ];
         $scope.addPost = function(){
             if ($scope.title || $scope.title !== '') {
-                $scope.posts.push({title: $scope.title, upvotes: 0});
+                $scope.posts.push({
+                    title: $scope.title,
+                    link: $scope.link,
+                    upvotes: 0
+                });
                 console.log("New post added!");
             }
             $scope.title = '';
+            $scope.link = '';
         };
         $scope.incrementUpvotes = function(post){
             post.upvotes++;
