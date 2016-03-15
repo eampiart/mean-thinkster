@@ -1,0 +1,12 @@
+.upvotes {
+  font-size: .8em;
+}
+
+.post-title {
+  font-size: 1.2em;
+
+  &::before {
+    content: ' - ';
+  }
+}
+
