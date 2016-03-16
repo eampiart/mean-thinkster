@@ -6,7 +6,7 @@ var maps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 
 gulp.task('minifyJS', function(){
-    return gulp.src('lib/js/main.js')
+    return gulp.src('lib/js/angularApp.js')
     .pipe(maps.init())
         .pipe(uglifyjs())
         .pipe(rename('main.min.js'))
@@ -19,7 +19,7 @@ gulp.task('minifySass', function(){
     .pipe(maps.init())
         .pipe(sass())
         .pipe(uglifycss())
-        .pipe(rename('main.min.css'))
+        .pipe(rename('style.min.css'))
     .pipe(maps.write('./'))
     .pipe(gulp.dest('public'));
 });
