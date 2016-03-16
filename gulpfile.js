@@ -6,12 +6,12 @@ var maps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 
 gulp.task('minifyJS', function(){
-    return gulp.src('lib/js/app.js')
+    return gulp.src('lib/js/main.js')
     .pipe(maps.init())
         .pipe(uglifyjs())
-        .pipe(rename('app.min.js'))
+        .pipe(rename('main.min.js'))
     .pipe(maps.write('./'))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('public'));
 });
 
 gulp.task('minifySass', function(){
@@ -19,14 +19,14 @@ gulp.task('minifySass', function(){
     .pipe(maps.init())
         .pipe(sass())
         .pipe(uglifycss())
-        .pipe(rename('app.min.css'))
+        .pipe(rename('main.min.css'))
     .pipe(maps.write('./'))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('public'));
 });
 
 gulp.task('watch', function(){
     console.log("Watching files for change...");
-    gulp.watch('lib/js/app.js', ['minifyJS']).on('change', function(event){
+    gulp.watch('lib/js/*.js', ['minifyJS']).on('change', function(event){
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
 
