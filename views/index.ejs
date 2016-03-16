@@ -18,6 +18,15 @@
 </head>
 
 <body ng-app="meanThinkster">
+    <nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
+        <ul class="nav navbar">
+            <li ng-show="isLoggedIn()"><a>{{currentUser}}</a></li>
+            <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
+            <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
+            <li ng-hide="isLoggedIn()"><a href="/#/register">Register</a></li>
+        </ul>
+    </nav>
+
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <ui-view></ui-view> <!-- here comes the template -->
@@ -41,12 +50,20 @@
             <span class="title" ng-show="!post.link">
                 {{post.title}}
             </span>
+
+            <span ng-show="post.author">
+              posted by {{post.author}} |
+            </span>
+            <span ng-hide="post.author">
+              no author |
+            </span>
+
             <span class="detail">
                 <a href="#/posts/{{post._id}}">Comments</a>
             </span>
         </div>
 
-        <form ng-submit="addPost()">
+        <form ng-show="isLoggedIn()" ng-submit="addPost()">
             <h3>Add a new post</h3>
             <input type="text" class="form-control" placeholder="Title" ng-model="title" />
             <br>
@@ -54,6 +71,10 @@
             <br>
             <button type="submit" class="btn btn-primary">Add new post</button>
         </form>
+
+        <div ng-hide="isLoggedIn()">
+          <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
+        </div>
     </script>
 
     <script type="text/ng-template" id="/posts.html">
@@ -63,6 +84,13 @@
                     {{post.title}}
                 </a>
                 <span ng-hide="post.link">{{post.title}}</span>
+
+                <span class="detail" ng-show="post.author">
+                  posted by {{post.author}}
+                </span>
+                <span ng-hide="post.author">
+                  no author
+                </span>
             </h3>
         </div>
 
@@ -75,13 +103,61 @@
             <span class="title">
                 {{comment.body}}
             </span>
+            <span class="detail" ng-show="post.author">
+              | posted by {{comment.author}}
+            </span>
+            <span ng-hide="post.author">
+              no author |
+            </span>
         </div>
 
-        <form ng-submit="addComment()">
+        <form ng-show="isLoggedIn()" ng-submit="addComment()">
             <h3>Add a new comment</h3>
 
             <input type="text" class="form-control" placeholder="comment" ng-model="body" />
             <button type="submit" class="btn btn-primary">Post comment</button>
+        </form>
+
+        <div ng-hide="isLoggedIn()">
+          <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="/register.html">
+        <div class="page-header">
+            <h1>MEAN Thinkster</h1>
+        </div>
+
+        <div ng-show="error" class="alert alert-danger row">
+            <span>{{error.message}}</span>
+        </div>
+
+        <form ng-submit="register()">
+            <h3>Register</h3>
+
+            <input type="text" class="form-control" placeholder="Username" ng-model="user.username" />
+            <input type="password" class="form-control" placeholder="Password" ng-model="user.password" />
+
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </script>
+
+    <script type="text/ng-template" id="/login.html">
+        <div class="page-header">
+            <h1>MEAN Thinkster</h1>
+        </div>
+
+        <div ng-show="error" class="alert alert-danger row">
+            <span>{{error.message}}</span>
+        </div>
+
+        <form ng-submit="logIn()">
+            <h3>Login</h3>
+
+            <input type="text" class="form-control" placeholder="Username" ng-model="user.username" />
+            <input type="password" class="form-control" placeholder="Password" ng-model="user.password" />
+
+            <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </script>
 </body>

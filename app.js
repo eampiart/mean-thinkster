@@ -4,17 +4,22 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var mongoose = require('mongoose');
+var passport = require('passport');
+
+
 require('./models/Posts');
 require('./models/Comments');
-
-mongoose.connect('mongodb://localhost/mean-thinkster');
+require('./models/Users');
+require('./config/passport');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+mongoose.connect('mongodb://localhost/mean-thinkster');
+
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,6 +34,8 @@ app.use(cookieParser());
 // Original: app.use(express.static(path.join(__dirname, 'public')));
 // but this one also mounts it to /public
 app.use('/public', express.static(__dirname + '/public'));
+
+app.use(passport.initialize());
 
 app.use('/', routes);
 app.use('/users', users);
