@@ -35,8 +35,8 @@ gulp.task('watch', function(){
     });
 });
 
-gulp.task('build', ['minifyJS', 'minifySass', 'watch']);
+gulp.task('build', ['minifyJS', 'minifySass']);
 
-gulp.task('default', ['build'], function() {
+gulp.task('default', ['build', 'watch'], function() {
     console.log("Gulp is now your servant!");
 });
