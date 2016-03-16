@@ -4,6 +4,7 @@ var uglifycss = require('gulp-uglifycss');
 var rename = require('gulp-rename');
 var maps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
+var nodemon = require('gulp-nodemon');
 
 gulp.task('minifyJS', function(){
     return gulp.src('lib/js/angularApp.js')
@@ -35,8 +36,12 @@ gulp.task('watch', function(){
     });
 });
 
+gulp.task('start', function() {
+    nodemon();
+});
+
 gulp.task('build', ['minifyJS', 'minifySass']);
 
-gulp.task('default', ['build', 'watch'], function() {
+gulp.task('default', ['build', 'watch', 'start'], function() {
     console.log("Gulp is now your servant!");
 });
