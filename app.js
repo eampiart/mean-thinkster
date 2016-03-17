@@ -16,7 +16,8 @@ require('./config/passport');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-mongoose.connect('mongodb://localhost/mean-thinkster');
+// mongoose.connect('mongodb://localhost/mean-thinkster');
+mongoose.connect('mongodb://heroku_0rdxpb7n:n09nhkdvanoj138hbheqqfrm3v@ds015849.mlab.com:15849/heroku_0rdxpb7n');
 
 var app = express();
 
