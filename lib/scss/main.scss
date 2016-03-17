@@ -19,7 +19,14 @@ body {
 
 .detail {
   font-size: .7em;
-  margin-left: 10px;
+  margin-left: 5px;
+}
+
+.comments {
+  &::before {
+    content: '-';
+    padding-right: 5px;
+  }
 }
 
 .bg-warning {

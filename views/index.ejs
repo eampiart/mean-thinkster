@@ -62,14 +62,14 @@
             </span>
 
             <span class="detail" ng-show="post.author">
-              posted by {{post.author}} |
+              posted by {{post.author}}
             </span>
             <span class="detail" ng-hide="post.author">
-              no author |
+              no author
             </span>
 
             <span class="detail">
-                <a href="#/posts/{{post._id}}">Comments</a> ({{post.comments.length}})
+                <a class="comments" href="#/posts/{{post._id}}">Comments</a> ({{post.comments.length}})
             </span>
         </div>
 
