@@ -1,2 +1,2 @@
-.upvotes .upvotes-count{font-size:.8em}.title{font-size:1.2em}.title::before{content:' - '}.detail{font-size:.9em}
+body{padding-top:70px}.upvotes .upvotes-count{font-size:.8em}.upvotes::after{content:' - ';font-size:1em}.comment .title+.detail{padding-left:5px}.comment .title+.detail::before{content:'|';padding:0 5px}.detail{font-size:.7em}.bg-warning{border-radius:5px;margin-top:20px;padding:15px}.page-header .glyphicon{font-size:1.3em}.page-header h3{display:inline}
 /*# sourceMappingURL=style.min.css.map */

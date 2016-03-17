@@ -1,17 +1,43 @@
+body {
+  padding-top: 70px;
+}
+
 .upvotes {
   .upvotes-count {
     font-size: .8em;
   }
+
+  &::after {
+    content: ' - ';
+    font-size: 1em;
+  }
 }
 
-.title {
-  font-size: 1.2em;
+.comment .title + .detail {
+  padding-left: 5px;
 
   &::before {
-    content: ' - ';
+    content: '|';
+    padding: 0 5px;
   }
 }
 
 .detail {
-  font-size: .9em;
+  font-size: .7em;
+}
+
+.bg-warning {
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.page-header {
+  .glyphicon {
+    font-size: 1.3em;
+  }
+
+  h3 {
+    display: inline;
+  }
 }
